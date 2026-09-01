@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-default>待办事项</title>
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <h1><span class="title-icon">📝</span> 我的待办清单</h1>
+        <p>记录每一件需要完成的事</p>
+      </header>
+      <div class="card">
+        <form id="todo-form" class="todo-form">
+          <input
+            id="todo-input"
+            class="todo-input"
+            type="text"
+            placeholder="今天要做什么？"
+            autocomplete="off"
+          />
+          <select id="todo-priority" class="todo-priority">
+            <option value="low">🟢 低</option>
+            <option value="medium" selected>🟡 中</option>
+            <option value="high">🔴 高</option>
+          </select>
+          <button type="submit" class="todo-add">➕ 添加任务</button>
+        </form>
+        <div id="todo-filters" class="todo-filters">
+          <button class="todo-filter active" data-filter="all">全部</button>
+          <button class="todo-filter" data-filter="active">未完成</button>
+          <button class="todo-filter" data-filter="completed">已完成</button>
+        </div>
+        <ul id="todo-list" class="todo-list"></ul>
+        <div class="empty" id="empty-state" style="display:none;">
+          <span class="empty-icon">🎉</span>
+          <p>太棒了，没有待办任务！</p>
+          <span class="empty-sub">在上方添加一个新任务开始吧</span>
+        </div>
+        <div class="todo-footer">
+          <div id="todo-counts" class="todo-counts"></div>
+          <div class="footer-actions">
+            <button id="clear-completed" class="clear-btn">清空已完成</button>
+            <button id="clear-all" class="clear-btn danger">全部清空</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="confirm-modal" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <p id="confirm-message" class="modal-message"></p>
+        <div class="modal-actions">
+          <button id="confirm-cancel" class="modal-btn cancel">取消</button>
+          <button id="confirm-ok" class="modal-btn danger">确认清空</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
